@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Select Date and Time</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+    }
+
+    .calendar-container {
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    .calendar {
+        display: inline-block;
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+
+    .time-picker {
+        font-size: 16px;
+        padding: 5px;
+        margin-bottom: 10px;
+    }
+
+    .selected-date-time {
+        margin-top: 20px;
+        font-size: 18px;
+    }
+
+    .button {
+        display: block;
+        padding: 10px 20px;
+        font-size: 16px;
+        color: #fff;
+        background-color: #4CAF50;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .button:hover {
+        background-color: #45a049;
+    }
+    #date-picker
+    {
+        width: 130px;
+    }
+    #time-picker
+    {
+        width: 125px;
+    }
+</style>
+</head>
+<body>
+    <div class="calendar-container">
+        <h2>Select Date and Time</h2>
+        <form id="datetime-form" action="/doctor-availability" method="get">
+            <input type="text" id="date-picker" name="date" min="" max="" class="calendar" placeholder="<%=dateString%>" onfocus="(this.type='date')"><br>
+            <input type="text" id="time-picker" name="time" min="" max="" class="time-picker" placeholder="<%=timeString%>" onfocus="(this.type='time')"><br>
+            <div class="selected-date-time" id="selected-date-time"></div>
+            <button type="submit" class="button">Check</button>
+        </form>
+        <h2><%=message%></h2>
+        <h3><%=nextAvailableSlot.date%>  <%=nextAvailableSlot.time%></h3>
+    </div>
+
+    <script>
+        
+
+        // Set min attribute of date picker to today's date
+        var today = new Date().toISOString().split('T')[0];
+        document.getElementById("date-picker").setAttribute("min", today);
+
+
+        
+    </script>
+</body>
+</html>
